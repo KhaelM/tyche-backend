@@ -170,15 +170,35 @@ INSERT INTO product_categories (product_name, category_name) VALUES
 	('Rocadi Jeans',	'Most Wanted'),
 	('Visual M. T-Shirt',	'Shirts');
 	
-	
+	DELETE FROM related_products;
 	INSERT INTO related_products (current_product, related_product) VALUES
 	('Alani T-Shirt', 'Little Black Shirt'),
 	('Alani T-Shirt', 'Marina Style'),
 	('Alani T-Shirt', 'Andora Scarf'),
-	('Alani T-Shirt', 'Jennifer Scarf');
+	('Alani T-Shirt', 'Jennifer Scarf'),
+	('Amari Shirt', 'Belka T-Shirt'),
+	('Amari Shirt', 'Little Black Shirt'),
+	('Amari Shirt', 'Alani T-Shirt'),
+	('Amari Shirt', 'Marina Style'),
+	('Andora Scarf', 'Belka T-Shirt'),
+	('Andora Scarf', 'Merchantile - Blouse'),
+	('Andora Scarf', 'Jennifer Scarf'),
+	('Andora Scarf', 'Visual M. T-Shirt'),
+	('Asabi - Jeans', 'Rocadi Jeans'),
+	('Asabi - Jeans', 'Blue Magawi Shoes'),
+	('Asabi - Jeans', 'Blue Sweater'),
+	('Asabi - Jeans', 'Manago Shirt'),
+	('Beije Magawi Shoes', 'Red Magawi Shoes'),
+	('Beije Magawi Shoes', 'Blue Magawi Shoes'),
+	('Belka T-Shirt', 'Little Black Top'),
+	('Belka T-Shirt', 'Merchantile - Blouse'),
+	('Belka T-Shirt', 'Amari Shirt'),
+	('Belka T-Shirt', 'Alani T-Shirt');
+
 	
 	
-	DELETE FROM related_products where current_product = 'Itachi Uchiha';
-	DELETE FROM product_tags where product_name = 'Itachi Uchiha';
-	DELETE FROM product_categories where product_name = 'Itachi Uchiha';
-	DELETE FROM product where product.name = 'Itachi Uchiha';
+	DELETE FROM related_products where current_product = 'Bobobo';
+	DELETE FROM related_products where related_product = 'Bobobo';
+	DELETE FROM product_tags where product_name = 'Bobobo';
+	DELETE FROM product_categories where product_name = 'Bobobo';
+	DELETE FROM product where product.name = 'Bobobo';
