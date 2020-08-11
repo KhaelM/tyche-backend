@@ -5,11 +5,14 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FileUtils;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,6 +34,18 @@ public class ProductService {
 	private static final String[] extensionsAllowed = { "jpg", "jpeg", "png" };
 	@Autowired
 	ProductDao productDao;
+	
+	@Transactional
+	public Set<Product> getRelatedProducts(String name) {
+		Set<Product> relatedProducts = findProductByName(name).getRelatedProducts();
+		Hibernate.initialize(relatedProducts);
+		Iterator<Product> itr = relatedProducts.iterator();
+		// traversing over HashSet
+		while(itr.hasNext()){
+		  Hibernate.initialize(itr.next().getReviews());
+		}
+		return relatedProducts;
+	}
 	
 	public List<Product> getAllProducts() {
 		return productDao.getAllProducts();

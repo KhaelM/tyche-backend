@@ -2,6 +2,7 @@ package tyche.controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 
@@ -58,6 +59,11 @@ public class ProductController {
 		json.setData(AppInitializer.MAX_REQUEST_SIZE);
 		json.setStatusSuccess();
 		return json;
+	}
+	
+	@GetMapping("/relatedProducts/{name}")
+	public Set<Product> getRelatedProducts(@PathVariable String name) {
+		return productService.getRelatedProducts(name);
 	}
 	
 	@PostMapping("")
