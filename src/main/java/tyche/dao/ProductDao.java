@@ -21,13 +21,13 @@ public class ProductDao extends AbstractDao<String, Product> {
 	public List<Product> getAllProducts() {
 		Session session = getSession();
 		@SuppressWarnings("unchecked")
-		Query<Product> query = session.createQuery("select distinct product from Product as product left join fetch product.categories left join fetch product.tags left join fetch product.reviews left join fetch product.relatedProducts");
+		Query<Product> query = session.createQuery("select distinct product from Product as product left join fetch product.categories left join fetch product.tags left join fetch product.reviews");
 		return query.getResultList();
 	}
 	
 	public List<Product> searchProducts(String search) {
 		Session session = getSession();
-		TypedQuery<Product> query = session.createQuery("select distinct product from Product product left join fetch product.categories left join fetch product.tags left join fetch product.relatedProducts where product.name LIKE :name", Product.class);
+		TypedQuery<Product> query = session.createQuery("select distinct product from Product product left join fetch product.categories left join fetch product.tags where product.name LIKE :name", Product.class);
 		query.setParameter("name", "%"+search+"%");
 		return query.getResultList();
 	}
@@ -35,7 +35,7 @@ public class ProductDao extends AbstractDao<String, Product> {
 	public Product findProductByName(String name) {
 		Session session = getSession();
 		@SuppressWarnings("unchecked")
-		Query<Product> query = session.createQuery("select distinct product from Product product left join fetch product.categories left join fetch product.tags left join fetch product.reviews left join fetch product.relatedProducts as relatedProduct left join fetch relatedProduct.reviews where product.name = :name");
+		Query<Product> query = session.createQuery("select distinct product from Product product left join fetch product.categories left join fetch product.tags left join fetch product.reviews where product.name = :name");
 		query.setParameter("name", name);
         return query.getSingleResult();
     }
