@@ -4,19 +4,21 @@ grant all privileges on database seo to debabe;
 create user razoky superuser password 'boss';
 grant debabe to razoky;
 
+DROP TABLE login CASCADE;
 DROP TABLE review CASCADE;
 DROP TABLE product_tags CASCADE;
 DROP TABLE tag CASCADE;
 DROP TABLE product_categories CASCADE;
 DROP TABLE category CASCADE;
 DROP TABLE product CASCADE;
+DROP TABLE related_products CASCADE;
 
 CREATE TABLE product (
     name varchar(50) PRIMARY KEY,
     price numeric(5,2),
     sale_price numeric(5,2),
     recap varchar(500),
-    description varchar(500)
+    description varchar(1500)
 );
 
 CREATE TABLE category (
