@@ -256,6 +256,8 @@ INSERT INTO product_categories (product_name, category_name) VALUES
 	('Visual M. T-Shirt', 'Belka T-Shirt'),
 	('Visual M. T-Shirt', 'Jennifer Scarf');
 
+INSERT INTO review (name, comment, rate, product_name) VALUES
+('LeMooky', 'Milay be le produit eh!', 5, 'Alani T-Shirt');
 	
 	
 	DELETE FROM related_products where current_product = 'Bobobo';

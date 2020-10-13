@@ -36,7 +36,6 @@ public class ProductController {
 	@GetMapping("")
 	public List<Product> getAllProducts() {
 		return productService.getAllProducts();
-
 	}
 	
 	@GetMapping("/search/{input}")
